@@ -71,7 +71,7 @@ namespace TicTacToeAdvanced
             return false;
         }
 
-        public void handleGameStateChanged(GameState state)
+        public void HandleGameStateChanged(GameState state)
         {
             Console.Clear();
             Console.Out.WriteLine("Winner: " + state.Winner);

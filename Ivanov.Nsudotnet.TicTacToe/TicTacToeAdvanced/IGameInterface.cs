@@ -2,6 +2,6 @@
 {
     public interface IGameInterface
     {
-        void handleGameStateChanged(GameState state);
+        void HandleGameStateChanged(GameState state);
     }
 }

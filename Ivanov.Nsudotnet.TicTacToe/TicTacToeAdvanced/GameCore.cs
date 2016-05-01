@@ -20,7 +20,7 @@ namespace TicTacToeAdvanced
             set
             {
                 gameInterface = value; 
-                gameInterface.handleGameStateChanged(new GameState(Field, Winner.Unknown, CurrentPlayer));
+                gameInterface.HandleGameStateChanged(new GameState(Field, Winner.Unknown, CurrentPlayer));
             }
         }
 
@@ -113,7 +113,7 @@ namespace TicTacToeAdvanced
 
             if (GameInterface != null)
             {
-                GameInterface.handleGameStateChanged(new GameState(Field, winner, CurrentPlayer));
+                GameInterface.HandleGameStateChanged(new GameState(Field, winner, CurrentPlayer));
             }
             return winner;
         }
