@@ -5,10 +5,9 @@ using System.Security.Cryptography;
 
 namespace Enigma
 {
-    public struct Secret
+    public class Secret
     {
         public Secret(byte[] key, byte[] initializationVector)
-            : this()
         {
             Key = key;
             InitializationVector = initializationVector;
