@@ -20,20 +20,10 @@ namespace Enigma
 
     public class Encryptor
     {
-        private static readonly Dictionary<string, Func<SymmetricAlgorithm>> AlgorithmSuppliers = new Dictionary<string, Func<SymmetricAlgorithm>>();
-
-        static Encryptor()
-        {
-            AlgorithmSuppliers["aes"] = Aes.Create;
-            AlgorithmSuppliers["des"] = DES.Create;
-            AlgorithmSuppliers["rc2"] = RC2.Create;
-            AlgorithmSuppliers["rijndael"] = Rijndael.Create;
-        }
-
         public Secret Encrypt(string algorithm, Stream inputStream, Stream encryptedStream)
         {
-            var algorithmSupplier = AlgorithmSuppliers[algorithm.ToLower()];
-            if (algorithmSupplier == null)
+            Func<SymmetricAlgorithm> algorithmSupplier;
+            if (!AlgorithmSuppliersHolder.AlgorithmSuppliers.TryGetValue(algorithm.ToLower(), out algorithmSupplier))
             {
                 throw new AlgorithmNotSupported(string.Format("Algorithm {0} not suppoted", algorithm));
             }

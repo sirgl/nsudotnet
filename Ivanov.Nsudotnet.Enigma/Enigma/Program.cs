@@ -10,9 +10,11 @@ namespace Enigma
 {
     class Program
     {
-        const string Help = "arguments: \n" +
-                            "encrypt <inputFile> <algorithm> <encryptedFileName> |\n" +
-                            "decrypt <encryptedFileName> <algorithm> <keyFileName> <decryptedFileName>";
+        const string Help = 
+@"arguments: 
+encrypt <inputFile> <algorithm> <encryptedFileName> |
+decrypt <encryptedFileName> <algorithm> <keyFileName> <decryptedFileName>";
+
 
 
         static void Main(string[] args)

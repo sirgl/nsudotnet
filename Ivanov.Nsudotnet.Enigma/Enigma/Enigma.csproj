@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlgorithmNotSupported.cs" />
+    <Compile Include="AlgorithmSuppliersHolder.cs" />
     <Compile Include="DecryptionController.cs" />
     <Compile Include="EncryptionController.cs" />
     <Compile Include="Decryptor.cs" />

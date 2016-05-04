@@ -7,20 +7,12 @@ namespace Enigma
 {
     public class Decryptor
     {
-        static readonly Dictionary<string, Func<SymmetricAlgorithm>> AlgorithmSuppliers = new Dictionary<string, Func<SymmetricAlgorithm>>();
 
-        static Decryptor()
-        {
-            AlgorithmSuppliers["aes"] = Aes.Create;
-            AlgorithmSuppliers["des"] = DES.Create;
-            AlgorithmSuppliers["rc2"] = RC2.Create;
-            AlgorithmSuppliers["rijndael"] = Rijndael.Create;
-        }
 
         public void Decrypt(string algorithm, Stream encryptedStream, Stream outputStream, byte[] key, byte[] initialVelctor)
         {
-            var algorithmSupplier = AlgorithmSuppliers[algorithm.ToLower()];
-            if (algorithmSupplier == null)
+            Func<SymmetricAlgorithm> algorithmSupplier;
+            if (!AlgorithmSuppliersHolder.AlgorithmSuppliers.TryGetValue(algorithm.ToLower(), out algorithmSupplier))
             {
                 throw new AlgorithmNotSupported(string.Format("Algorithm {0} not suppoted", algorithm));
             }
